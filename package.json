@@ -1,0 +1,24 @@
+{
+  "name": "task",
+  "version": "1.0.0",
+  "description": "A task with Angular, PHP and Postgres",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jallen0927/task.git"
+  },
+  "keywords": [
+    "angular",
+    "php",
+    "postgres"
+  ],
+  "author": "Shawn Lin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jallen0927/task/issues"
+  },
+  "homepage": "https://github.com/jallen0927/task#readme"
+}

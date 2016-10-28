@@ -1,10 +1,10 @@
 <?php
 
-define('SERVER_PATH', dirname(__FILE__) . '/server');
-define('CLIENT_PATH', dirname(__FILE__) . '/client');
+define('SERVER_PATH', dirname(__FILE__));
 
 require_once(SERVER_PATH . '/config.php');
-require_once(SERVER_PATH . '/database.php');
+require_once(SERVER_PATH . '/model/Database.php');
+require_once(SERVER_PATH . '/model/Paragraph.php');
 
 foreach (array(
     'DATABASE_NAME',
@@ -21,6 +21,6 @@ $databaseConfig['password'] = DATABASE_PASSWORD;
 $databaseConfig['host'] = defined('DATABASE_HOST') ? DATABASE_HOST : 'localhost';
 $databaseConfig['port'] = defined('DATABASE_PORT') ? DATABASE_PORT : '5432';
 
-$database = new Database($databaseConfig);
+Database::bootstrap($databaseConfig);
 
-var_dump($database->getConnection()); die;
+$paragraph = Paragraph::get_one();

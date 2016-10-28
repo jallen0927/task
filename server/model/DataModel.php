@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: xlin
- * Date: 28/10/16
- * Time: 8:29 PM
- */
 class DataModel {
 
     public $id = 0;
@@ -32,14 +26,19 @@ class DataModel {
 
     /**
      * @param $relation
+     * @param bool $reverse
      * @return array
-     * Get relation records of current data object
+     * Get relation records of current data object;
      */
-    public function getRelationRecords($relation) {
+    public function getRelationRecords($relation, $reverse = false) {
         $records = array();
         if(!$this->id) return $records;
         $class = get_called_class();
-        $query = "SELECT * FROM " . strtolower($relation) . " AS relation INNER JOIN " . strtolower($class) . " AS self ON self.id = relation." . strtolower($class);
+        if($reverse) {
+            $query = "SELECT relation.* FROM " . strtolower($relation) . " AS relation INNER JOIN " . strtolower($class) . " AS self ON self." . strtolower($relation) . " = relation.id WHERE self.id = " . $this->id;
+        } else {
+            $query = "SELECT relation.* FROM " . strtolower($relation) . " AS relation INNER JOIN " . strtolower($class) . " AS self ON self.id = relation." . strtolower($class) . " WHERE self.id = " . $this->id;
+        }
         $result = Database::query($query);
         $rows = pg_fetch_all($result);
 

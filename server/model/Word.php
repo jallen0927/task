@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: xlin
- * Date: 27/10/16
- * Time: 9:48 PM
- */
 class Word extends DataModel {
 
     public $id = 0;

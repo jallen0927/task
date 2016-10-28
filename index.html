@@ -5,20 +5,27 @@
     <title>Qualification Test</title>
 </head>
 <body>
-    <div ng-app="app" ng-controller="ParagraphCtl as ctl">
+    <div ng-app="app.paragraph" ng-controller="ParagraphCtl as ctl">
         <ul>
             <li ng-repeat="paragraph in ctl.paragraphs">
-                <span ng-repeat="word in paragraph.words | orderBy: 'paragraph_index'">
+                <word highlight="ctl.highlightWord(word)" ng-repeat="word in paragraph.words | orderBy: 'paragraph_index'">
                     <span ng-repeat="letter in word.letters | orderBy: 'word_index'">{{letter.content}}</span>
-                </span>
+                </word>
             </li>
         </ul>
     </div>
 
+    <!-- Libraries -->
 <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
 <script type="text/javascript" src="node_modules/angular-resource/angular-resource.min.js"></script>
-<script type="text/javascript" src="client/index.js"></script>
+    <!-- End Libraries -->
+
+    <!-- paragraph component -->
+<script type="text/javascript" src="client/components/paragraph/paragraph.js"></script>
+    <script type="text/javascript" src="client/components/paragraph/directives/word.directive.js"></script>
+<script type="text/javascript" src="client/components/paragraph/controllers/paragraph.controller.js"></script>
 <script type="text/javascript" src="client/components/paragraph/services/paragraph.service.js"></script>
+    <!-- End paragraph component -->
 
 </body>
 </html>

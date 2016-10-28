@@ -5,13 +5,19 @@
     app.directive('word', [function () {
         return {
             scope: {
-                highlight: '&'
+                add: '&',
+                remove: '&'
             },
             link: function (scope, element, attrs) {
                 element.on('contextmenu', function (e) {
                     e.preventDefault();
-                    scope.highlight({word: scope.$parent.word});
-                    element.toggleClass('highlight');
+                    if(element.hasClass('highlight')) {
+                        scope.remove({word: scope.$parent.word});
+                        element.removeClass('highlight');
+                    } else {
+                        scope.add({word: scope.$parent.word});
+                        element.addClass('highlight');
+                    }
                 })
             }
         }

@@ -1,14 +1,20 @@
 <?php
+/**
+ * @todo Handle router for different api call
+ * @todo Trim unused properties data for json response to optimize data size sent to client end
+ * @todo Unit Test
+ */
 
 define('SERVER_PATH', dirname(__FILE__));
 
 require_once(SERVER_PATH . '/config.php');
-require_once(SERVER_PATH . '/model/Database.php');
-require_once(SERVER_PATH . '/model/DataModel.php');
-require_once(SERVER_PATH . '/model/Sound.php');
-require_once(SERVER_PATH . '/model/Letter.php');
-require_once(SERVER_PATH . '/model/Word.php');
-require_once(SERVER_PATH . '/model/Paragraph.php');
+require_once(SERVER_PATH . '/utils/Response.php');
+require_once(SERVER_PATH . '/utils/Database.php');
+require_once(SERVER_PATH . '/models/DataModel.php');
+require_once(SERVER_PATH . '/models/Sound.php');
+require_once(SERVER_PATH . '/models/Letter.php');
+require_once(SERVER_PATH . '/models/Word.php');
+require_once(SERVER_PATH . '/models/Paragraph.php');
 
 foreach (array(
     'DATABASE_NAME',
@@ -27,4 +33,5 @@ $databaseConfig['port'] = defined('DATABASE_PORT') ? DATABASE_PORT : '5432';
 
 Database::bootstrap($databaseConfig);
 
-$paragraph = Paragraph::get_one();
+$paragraph = Paragraph::get();
+Response::json_response($paragraph);

@@ -24,17 +24,20 @@ class DataModel {
         return $row ? $obj->update($row) : false;
     }
 
+
     /**
      * @param $relation
-     * @param bool $reverse
+     * @param bool $opposite
      * @return array
-     * Get relation records of current data object;
+     * Get relation records of current data object; Set $opposite = true if foreign key is in the table of called class;
+     * Currently this only works for one-to-many and one-to-one relationship
+     * @todo Handle many-to-many relationship
      */
-    public function getRelationRecords($relation, $reverse = false) {
+    public function getRelationRecords($relation, $opposite = false) {
         $records = array();
         if(!$this->id) return $records;
         $class = get_called_class();
-        if($reverse) {
+        if($opposite) {
             $query = "SELECT relation.* FROM " . strtolower($relation) . " AS relation INNER JOIN " . strtolower($class) . " AS self ON self." . strtolower($relation) . " = relation.id WHERE self.id = " . $this->id;
         } else {
             $query = "SELECT relation.* FROM " . strtolower($relation) . " AS relation INNER JOIN " . strtolower($class) . " AS self ON self.id = relation." . strtolower($class) . " WHERE self.id = " . $this->id;

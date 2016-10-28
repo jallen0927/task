@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Qualification Test</title>
+</head>
+<body>
+    <div ng-app="app" ng-controller="ParagraphCtl as ctl">
+        <ul>
+            <li ng-repeat="paragraph in ctl.paragraphs">
+                <span ng-repeat="word in paragraph.words | orderBy: 'paragraph_index'">
+                    <span ng-repeat="letter in word.letters | orderBy: 'word_index'">{{letter.content}}</span>
+                </span>
+            </li>
+        </ul>
+    </div>
+
+<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+<script type="text/javascript" src="node_modules/angular-resource/angular-resource.min.js"></script>
+<script type="text/javascript" src="client/index.js"></script>
+<script type="text/javascript" src="client/services/paragraph.service.js"></script>
+
+</body>
+</html>

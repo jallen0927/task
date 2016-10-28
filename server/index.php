@@ -4,6 +4,8 @@ define('SERVER_PATH', dirname(__FILE__));
 
 require_once(SERVER_PATH . '/config.php');
 require_once(SERVER_PATH . '/model/Database.php');
+require_once(SERVER_PATH . '/model/DataModel.php');
+require_once(SERVER_PATH . '/model/Word.php');
 require_once(SERVER_PATH . '/model/Paragraph.php');
 
 foreach (array(
@@ -24,3 +26,5 @@ $databaseConfig['port'] = defined('DATABASE_PORT') ? DATABASE_PORT : '5432';
 Database::bootstrap($databaseConfig);
 
 $paragraph = Paragraph::get_one();
+$paragraph->words = $paragraph->getRelationRecords('Word');
+var_dump($paragraph);

@@ -6,19 +6,14 @@
  * Date: 27/10/16
  * Time: 9:48 PM
  */
-class Word {
+class Word extends DataModel {
 
-    private $letters = array();
+    public $id = 0;
 
-    public function getLetters() {
+    public $paragraph = 0;
 
-    }
+    public $paragraph_index = 0;
 
-    public static function get_by_paragraph($paragraphID) {
-        $query = 'SELECT DISTINCT ';
-    }
+    public $content = '';
 
-    public function getParagraph() {
-
-    }
 }

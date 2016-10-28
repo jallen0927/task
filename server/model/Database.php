@@ -74,13 +74,37 @@ class Database {
         self::$connection = $connection;
     }
 
+    /**
+     * @param $query
+     * @return resource
+     * @throws Exception
+     * Handle database query
+     */
     public static function query($query) {
+        if(!self::check_connection()) {
+            throw new Exception('Please establish a valid database connection first.');
+        }
         $sanitizedQuery = pg_escape_string($query);
         $result = pg_query(self::$connection, $sanitizedQuery);
-        var_dump($result);
-        $row = pg_fetch_object($result);
-        $rows = pg_fetch_assoc($result);
-        var_dump($row); die;
+
+        if(!$result) {
+            $error = pg_last_error(self::$connection);
+            throw new Exception($error);
+        }
+
+        return $result;
+    }
+
+    /**
+     * @return bool
+     * Check if there is an OK database connection
+     */
+    public static function check_connection() {
+        if(self::$db && self::$connection && pg_connection_status(self::$connection) === PGSQL_CONNECTION_OK) {
+            return true;
+        }
+
+        return false;
     }
 
     /**

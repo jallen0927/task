@@ -1,6 +1,6 @@
 'use strict';
 
-(function (app) {
+(function(app) {
     app.directive('letter', [
         function () {
             return {

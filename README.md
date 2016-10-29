@@ -19,4 +19,4 @@
 ## NPM Commands
 * You don't need to run any npm commands in order to run the app. All third-party libraries are bundled into the production js file.
 * However, if you want to change the source code and get it work, you need to compile them. Before doing it, install the packages first: "npm install"
-* "npm dev" will open a lite node server and open a window from your default browser. Whenever you change js or scss source code, it will compile them to "client/dist" folder and refresh the web page. **Warning: the back-end api will not work in this case as the lite server cannot execute PHP**. 
+* "npm run dev" will open a lite node server and open a window from your default browser. Whenever you change js or scss source code, it will compile them to "client/dist" folder and refresh the web page. **Warning: the back-end api will not work in this case as the lite server cannot execute PHP**. 

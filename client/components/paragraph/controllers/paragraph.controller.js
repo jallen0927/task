@@ -1,6 +1,6 @@
 'use strict';
 
-(function (app) {
+(function(app, _) {
     app.controller('ParagraphCtl', ['$scope', 'ParagraphService',
         function($scope, ParagraphService) {
             //Set view model
@@ -73,5 +73,5 @@
             };
         }
     ]);
-})(angular.module('app.paragraph'));
+})(angular.module('app.paragraph'), _);
 

@@ -1,7 +1,7 @@
 'use strict';
 
 
-(function (app) {
+(function(app) {
     app.directive('word', [function () {
         return {
             restrict: 'AE',

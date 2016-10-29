@@ -1,0 +1,13 @@
+$highlightColor: #ff4500;
+
+.paragraph {
+
+  .word.highlight {
+    border: 1px solid $highlightColor;
+  }
+
+  .letter.highlight {
+    background-color: $highlightColor;
+  }
+
+}

@@ -4,6 +4,7 @@
 (function (app) {
     app.directive('word', [function () {
         return {
+            restrict: 'AE',
             scope: {
                 add: '&',
                 remove: '&'

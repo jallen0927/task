@@ -4,6 +4,7 @@
     app.directive('letter', [
         function () {
             return {
+                restrict: 'AE',
                 scope: {
                     add: '&',
                     remove: '&'

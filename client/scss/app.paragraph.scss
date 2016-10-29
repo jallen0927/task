@@ -1,21 +1,32 @@
-$highlightWordColor: #ff4500;
-$highlightLetterColor: #ffff00;
+$highlightWordColor: #ffff00;
+$highlightLetterColor: #ff4500;
+
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
 .paragraph {
 
   list-style: none;
 
   .word {
-    letter-spacing: 1px;
-
+    display: inline-block;
+    padding-left: 2px;
     &.highlight {
-      border: 1px solid $highlightWordColor;
-
+      background-color: $highlightWordColor;
     }
-
+    &:after {
+      content: ' ';
+      display: inline-block;
+    }
   }
 
   .letter.highlight {
+    display: inline;
     background-color: $highlightLetterColor;
   }
 

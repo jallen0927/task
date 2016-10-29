@@ -1,1 +1,1 @@
-.paragraph{list-style:none}.paragraph .word{letter-spacing:1px}.paragraph .word.highlight{border:1px solid #ff4500}.paragraph .letter.highlight{background-color:#ff0}
+.no-select{-webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.paragraph{list-style:none}.paragraph .word{display:inline-block;padding-left:2px}.paragraph .word.highlight{background-color:#ff0}.paragraph .word:after{content:' ';display:inline-block}.paragraph .letter.highlight{display:inline;background-color:#ff4500}

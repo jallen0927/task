@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "lite-server",
-    "dev": "concurrently \"gulp scss:w\" \"lite-server\"",
+    "dev": "concurrently \"gulp js:w\" \"gulp scss:w\" \"lite-server\"",
     "test": "test"
   },
   "repository": {

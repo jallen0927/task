@@ -9,15 +9,12 @@
                 remove: '&'
             },
             link: function (scope, element, attrs) {
+                var word = scope.$parent.word;
+                    scope.$parent.selected = false;
                 element.on('contextmenu', function (e) {
                     e.preventDefault();
-                    if(element.hasClass('highlight')) {
-                        scope.remove({word: scope.$parent.word});
-                        element.removeClass('highlight');
-                    } else {
-                        scope.add({word: scope.$parent.word});
-                        element.addClass('highlight');
-                    }
+                    scope.$parent.selected ? scope.remove({word: word}) : scope.add({word: word});
+                    scope.$apply(scope.$parent.selected = !scope.$parent.selected);
                 })
             }
         }

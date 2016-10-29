@@ -1,1 +1,1 @@
-.paragraph .word.highlight{border:1px solid #ff4500}.paragraph .letter.highlight{background-color:#ff4500}
+.paragraph{list-style:none}.paragraph .word{letter-spacing:1px}.paragraph .word.highlight{border:1px solid #ff4500}.paragraph .letter.highlight{background-color:#ff0}

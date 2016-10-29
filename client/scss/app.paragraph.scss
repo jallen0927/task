@@ -1,13 +1,22 @@
-$highlightColor: #ff4500;
+$highlightWordColor: #ff4500;
+$highlightLetterColor: #ffff00;
 
 .paragraph {
 
-  .word.highlight {
-    border: 1px solid $highlightColor;
+  list-style: none;
+
+  .word {
+    letter-spacing: 1px;
+
+    &.highlight {
+      border: 1px solid $highlightWordColor;
+
+    }
+
   }
 
   .letter.highlight {
-    background-color: $highlightColor;
+    background-color: $highlightLetterColor;
   }
 
 }

@@ -9,16 +9,24 @@
                     remove: '&'
                 },
                 link: function (scope, element, attrs) {
+                    var letter = scope.$parent.letter;
+                    scope.$parent.selected = false;
                     element.on('click', function (e) {
                         e.preventDefault();
-                        if(element.hasClass('highlight')) {
-                            scope.remove({letter: scope.$parent.letter});
-                            element.removeClass('highlight');
-                        } else {
-                            scope.add({letter: scope.$parent.letter});
-                            element.addClass('highlight');
+                        scope.$parent.selected ? scope.remove({letter: letter}) : scope.add({letter: letter});
+                    });
+
+                    scope.$on('select', function (e, args) {
+                        if(args.sound_code === letter.sound_code) {
+                            scope.$apply(scope.$parent.selected = true);
                         }
-                    })
+                    });
+
+                    scope.$on('unSelect', function (e, args) {
+                        if(args.sound_code === letter.sound_code) {
+                            scope.$apply(scope.$parent.selected = false);
+                        }
+                    });
                 }
             }
         }

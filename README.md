@@ -6,6 +6,7 @@
 * Clone this repository to the web server.
 * Refer to [Database Connection](#database) to configure the database information.
 * The back-end API is built in PHP(5.6) so please make sure the server is able to execute PHP and has permission to access the folder
+* To visit the app, go to the page of '$your-domain/index.html'
 
 ## <a name="database"></a>Database Connection
 * Database configuration in server/config.php. Database name, user name and password are compulsory field, otherwise the app will not work.

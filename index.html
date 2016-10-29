@@ -9,14 +9,20 @@
     <div ng-app="app.paragraph" ng-controller="ParagraphCtl as ctl">
         <ul>
             <li class="paragraph" ng-repeat="paragraph in ctl.paragraphs">
-                <word ng-class="['word', {highlight: selected}]" add="ctl.addWord(word)" remove="ctl.removeWord(word)" ng-repeat="word in paragraph.words | orderBy: 'paragraph_index'">
-                    <letter ng-class="['letter', {highlight: selected}]" add="ctl.addSound(letter)" remove="ctl.removeSound(letter)" ng-repeat="letter in word.letters | orderBy: 'word_index'">{{letter.content}}</letter>
+                <word ng-class="['word', {highlight: selected}]"
+                      add="ctl.addWord(word)"
+                      remove="ctl.removeWord(word)"
+                      ng-repeat="word in paragraph.words | orderBy: 'paragraph_index'">
+                    <letter ng-class="['letter', {highlight: selected}]"
+                            add="ctl.addSound(letter)"
+                            remove="ctl.removeSound(letter)"
+                            ng-repeat="letter in word.letters | orderBy: 'word_index'">{{letter.content}}
+                    </letter>
                 </word>
             </li>
         </ul>
         <button ng-click="ctl.reportResult()">Submit</button>
     </div>
-
     <script type="text/javascript" src="client/dist/app.min.js"></script>
 </body>
 </html>

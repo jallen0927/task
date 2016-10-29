@@ -21,7 +21,7 @@ foreach (array(
     'DATABASE_USERNAME',
     'DATABASE_PASSWORD') as $parameter) {
     if(!defined($parameter)) {
-        user_error('Please define ' . $parameter . ' in config.php');
+        user_error('Please define ' . $parameter . ' in config.php', E_USER_ERROR);
     }
 }
 
@@ -30,6 +30,10 @@ $databaseConfig['user'] = DATABASE_USERNAME;
 $databaseConfig['password'] = DATABASE_PASSWORD;
 $databaseConfig['host'] = defined('DATABASE_HOST') ? DATABASE_HOST : 'localhost';
 $databaseConfig['port'] = defined('DATABASE_PORT') ? DATABASE_PORT : '5432';
+
+if(!$databaseConfig['dbname'] || !$databaseConfig['user']) {
+    user_error('Please specify DATABASE_NAME and DATABASE_USERNAME in config.php', E_USER_ERROR);
+}
 
 Database::bootstrap($databaseConfig);
 

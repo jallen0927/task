@@ -7,8 +7,10 @@
             var vm = this,
                 //Fetch paragraph data from back-end
                 paragraphs = ParagraphService.query(function() {
-                vm.paragraphs = paragraphs;
-            });
+                    vm.paragraphs = paragraphs;
+                }, function (err) {
+                    console.log(err);
+                });
 
             vm.sounds = [];
             vm.words = [];

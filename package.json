@@ -4,9 +4,10 @@
   "description": "A task with Angular, PHP and Postgres",
   "main": "index.js",
   "scripts": {
+    "postinstall": "./node_modules/protractor/bin/webdriver-manager update",
     "start": "lite-server",
     "dev": "concurrently \"gulp js:w\" \"gulp scss:w\" \"lite-server\"",
-    "test": "test"
+    "test": "protractor protractor.config.js"
   },
   "repository": {
     "type": "git",

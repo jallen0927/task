@@ -10,6 +10,7 @@ var jsFiles = [
     './node_modules/angular/angular.min.js',
     './node_modules/angular-resource/angular-resource.min.js',
     './node_modules/underscore/underscore-min.js',
+    './client/app.js',
     './client/components/paragraph/paragraph.js',
     './client/components/paragraph/directives/letter.directive.js',
     './client/components/paragraph/directives/word.directive.js',

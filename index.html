@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app.paragraph">
 <head>
     <meta charset="UTF-8">
     <title>Qualification Test</title>
     <link rel="stylesheet" type="text/css" href="client/dist/app.min.css">
 </head>
 <body>
-    <div ng-app="app.paragraph" ng-controller="ParagraphCtl as ctl">
+    <div ng-controller="ParagraphCtl as ctl">
         <ul>
             <li class="paragraph" ng-repeat="paragraph in ctl.paragraphs">
                 <word ng-class="['word', 'no-select', {highlight: selected}]"

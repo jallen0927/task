@@ -4,13 +4,9 @@
     app.controller('ParagraphCtl', ['$scope', 'ParagraphService',
         function($scope, ParagraphService) {
             //Set view model
-            var vm = this,
+            var vm = this;
                 //Fetch paragraph data from back-end
-                paragraphs = ParagraphService.query(function() {
-                    vm.paragraphs = paragraphs;
-                }, function (err) {
-                    console.log(err);
-                });
+            vm.paragraphs = ParagraphService.query();
 
             vm.sounds = [];
             vm.words = [];

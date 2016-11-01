@@ -7,9 +7,9 @@ describe('Task Tests', function () {
     });
     var words = element.all(by.tagName('word')),
         letters = element.all(by.tagName('letter')),
-        firstE = letters.get(0),
-        elementX = letters.get(1),
-        secondE = letters.get(22);
+        firstS = letters.get(2),
+        secondS = letters.get(6),
+        lastS = letters.get(24);
 
     it('should have 5 words elements', function () {
         expect(words.count()).toEqual(5);
@@ -30,26 +30,26 @@ describe('Task Tests', function () {
         })
     });
 
-    it('should highlight both first e in expensive and e in fingers when click the first;', function () {
-        browser.actions().mouseMove(firstE).perform();
+    it('should highlight both s in expensive when click the first;', function () {
+        browser.actions().mouseMove(firstS).perform();
         browser.actions().click().perform();
-        expect(firstE.getAttribute('class')).toContain('highlight');
-        expect(secondE.getAttribute('class')).toContain('highlight');
+        expect(firstS.getAttribute('class')).toContain('highlight');
+        expect(secondS.getAttribute('class')).toContain('highlight');
     });
 
-    it('should not highlight x in expensive when click on first e in expensive', function () {
-        browser.actions().mouseMove(firstE).perform();
+    it('should not highlight s in fingers when click on first s in expensive', function () {
+        browser.actions().mouseMove(firstS).perform();
         browser.actions().click().perform();
-        expect(elementX.getAttribute('class')).not.toContain('highlight');
+        expect(lastS.getAttribute('class')).not.toContain('highlight');
     });
 
-    it('should unhighlight both e when the second time click on the second e', function () {
-        browser.actions().mouseMove(firstE).perform();
+    it('should unhighlight both s in expensive when the second time click on the second s', function () {
+        browser.actions().mouseMove(firstS).perform();
         browser.actions().click().perform();
-        browser.actions().mouseMove(secondE).perform();
+        browser.actions().mouseMove(secondS).perform();
         browser.actions().click().perform();
-        expect(firstE.getAttribute('class')).not.toContain('highlight');
-        expect(secondE.getAttribute('class')).not.toContain('highlight');
+        expect(firstS.getAttribute('class')).not.toContain('highlight');
+        expect(secondS.getAttribute('class')).not.toContain('highlight');
     });
 
 });

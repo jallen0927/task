@@ -4,18 +4,23 @@
 (function(app) {
     app.directive('word', [function () {
         return {
-            restrict: 'AE',
-            scope: {
-                add: '&',
-                remove: '&'
+            restrict: 'E',
+            controller: function() {
+
             },
-            link: function (scope, element, attrs) {
-                var word = scope.$parent.word;
-                    scope.$parent.selected = false;
+            bindToController: {
+                add: '&',
+                remove: '&',
+                word: '='
+            },
+            controllerAs: 'wordCtl',
+            link: function (scope, element, attrs, wordCtl) {
+                var word = wordCtl.word;
+                wordCtl.selected = false;
                 element.on('contextmenu', function (e) {
                     e.preventDefault();
-                    scope.$parent.selected ? scope.remove({word: word}) : scope.add({word: word});
-                    scope.$apply(scope.$parent.selected = !scope.$parent.selected);
+                    wordCtl.selected ? wordCtl.remove({word: word}) : wordCtl.add({word: word});
+                    scope.$apply(wordCtl.selected = !wordCtl.selected);
                 })
             }
         }

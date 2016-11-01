@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app.paragraph">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="UTF-8">
     <title>Qualification Test</title>
@@ -7,20 +7,27 @@
 </head>
 <body>
     <div ng-controller="ParagraphCtl as ctl">
-        <ul>
-            <li class="paragraph" ng-repeat="paragraph in ctl.paragraphs">
-                <word ng-class="['word', 'no-select', {highlight: selected}]"
+        <div>
+            <p class="paragraph" ng-repeat="paragraph in ctl.paragraphs">
+                <word ng-repeat="word in paragraph.words | orderBy: 'paragraph_index'"
+                      ng-class="['word', 'no-select', {highlight: wordCtl.selected}]"
                       add="ctl.addWord(word)"
                       remove="ctl.removeWord(word)"
-                      ng-repeat="word in paragraph.words | orderBy: 'paragraph_index'">
-                    <letter ng-class="['letter', 'no-select', {highlight: selected}]"
+                      word="word">
+                    <letter ng-repeat="letter in word.letters | orderBy: 'word_index'"
+                            ng-class="['letter', 'no-select', {highlight: letterCtl.selected}]"
                             add="ctl.addSound(letter)"
                             remove="ctl.removeSound(letter)"
-                            ng-repeat="letter in word.letters | orderBy: 'word_index'" ng-bind="letter.content">
+                            letter="letter"
+                            ng-bind="letter.content">
                     </letter>
                 </word>
-            </li>
-        </ul>
+            </p>
+        </div>
+        <div>
+            words: <span ng-bind="ctl.words.length"></span>
+            letters: <span ng-bind="ctl.sounds.length"></span>
+        </div>
         <button ng-click="ctl.reportResult()">Submit</button>
     </div>
     <script type="text/javascript" src="client/dist/app.min.js"></script>

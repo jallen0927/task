@@ -4,28 +4,33 @@
     app.directive('letter', [
         function () {
             return {
-                restrict: 'AE',
-                scope: {
-                    add: '&',
-                    remove: '&'
+                restrict: 'E',
+                controller: function () {
+
                 },
-                link: function (scope, element, attrs) {
-                    var letter = scope.$parent.letter;
-                    scope.$parent.selected = false;
+                bindToController: {
+                    add: '&',
+                    remove: '&',
+                    letter: '='
+                },
+                controllerAs: 'letterCtl',
+                link: function (scope, element, attrs, letterCtl) {
+                    var letter = letterCtl.letter;
+                    letterCtl.selected = false;
                     element.on('click', function (e) {
                         e.preventDefault();
-                        scope.$parent.selected ? scope.remove({letter: letter}) : scope.add({letter: letter});
+                        letterCtl.selected ? letterCtl.remove({letter: letter}) : letterCtl.add({letter: letter});
                     });
 
                     scope.$on('select', function (e, args) {
                         if(args.sound_code === letter.sound_code) {
-                            scope.$apply(scope.$parent.selected = true);
+                            scope.$apply(letterCtl.selected = true);
                         }
                     });
 
                     scope.$on('unSelect', function (e, args) {
                         if(args.sound_code === letter.sound_code) {
-                            scope.$apply(scope.$parent.selected = false);
+                            scope.$apply(letterCtl.selected = false);
                         }
                     });
                 }
